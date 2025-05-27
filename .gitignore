@@ -46,3 +46,9 @@ schema.gql
 
 # env
 /**/.env*
+
+# nx
+.nx
+
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
