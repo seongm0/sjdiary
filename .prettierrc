@@ -1,8 +1,0 @@
-{
-  "singleQuote": true,
-  "bracketSameLine": true,
-  "printWidth": 80,
-  "overrides": [
-    { "files": "**/*.{vue,tsx,jsx}", "options": { "printWidth": 100 } }
-  ]
-}
