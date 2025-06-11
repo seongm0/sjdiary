@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cache:clean": "rimraf node_modules applications/**/node_modules packages/**/node_modules && pnpm cache delete"
   },
   "keywords": [],
-  "author": "",
+  "author": "Seongmo Kang",
   "license": "ISC",
-  "packageManager": "pnpm@10.11.0"
+  "packageManager": "pnpm@10.11.0",
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  }
 }
