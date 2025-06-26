@@ -1,9 +1,10 @@
-import { globalIgnores } from 'eslint/config'
-import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
-import pluginVue from 'eslint-plugin-vue'
-import pluginVitest from '@vitest/eslint-plugin'
-import pluginPlaywright from 'eslint-plugin-playwright'
-import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
+import { globalIgnores } from 'eslint/config';
+import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript';
+import pluginVue from 'eslint-plugin-vue';
+import pluginVitest from '@vitest/eslint-plugin';
+import pluginPlaywright from 'eslint-plugin-playwright';
+import globals from 'globals';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
 // To allow more languages other than `ts` in `.vue` files, uncomment the following lines:
 // import { configureVueProject } from '@vue/eslint-config-typescript'
@@ -18,7 +19,20 @@ export default defineConfigWithVueTs(
 
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
 
-  pluginVue.configs['flat/essential'],
+  ...pluginVue.configs['flat/recommended'],
+  {
+    rules: {
+      // override/add rules settings here, such as:
+      // 'vue/no-unused-vars': 'error'
+    },
+    languageOptions: {
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+      },
+    },
+  },
+
   vueTsConfigs.recommended,
 
   {
@@ -30,5 +44,5 @@ export default defineConfigWithVueTs(
     ...pluginPlaywright.configs['flat/recommended'],
     files: ['e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],
   },
-  skipFormatting,
-)
+  eslintPluginPrettierRecommended,
+);
